@@ -15,6 +15,31 @@
     </entry>
     
     
+    
+    <entry>
+      <title>AcWing 35. 反转链表</title>
+      <link href="/algorithm/2021/04/30/AcWing%2035.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
+      <url>/algorithm/2021/04/30/AcWing%2035.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<p>定义一个函数，输入一个链表的头结点，反转该链表并输出反转后链表的头结点。</p><span id="more"></span><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">reverseList</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!head||!head-&gt;next)<span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> a=head;</span><br><span class="line">        <span class="keyword">auto</span> b=a;</span><br><span class="line">        <span class="keyword">auto</span> c=b-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(c!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">auto</span> d=c-&gt;next;</span><br><span class="line">            c-&gt;next=b;</span><br><span class="line">            b=c;</span><br><span class="line">            c=d;</span><br><span class="line">        &#125;</span><br><span class="line">        a-&gt;next=<span class="literal">NULL</span>;<span class="comment">//不要忘了原来的头当作尾节点时，他的next要指向NULL</span></span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">作者：Alex1900</span><br><span class="line">链接：https:<span class="comment">//www.acwing.com/file_system/file/content/whole/index/content/2210960/</span></span><br><span class="line">来源：AcWing</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 链表 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
