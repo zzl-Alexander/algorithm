@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="AcWing 817. 数组去重"/>
+
+
+
+
+  <meta name="keywords" content="双指针," />
+
+
+
+
+
+  <link rel="alternate" href="/algorithm/default" title="Alexander" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/algorithm/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/01/AcWing 817. 数组去重/"/>
+
+
+<meta name="description" content="给一个数组，输出数组中不同数的个数相当于实现unique函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AcWing 817. 数组去重">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/01/AcWing%20817.%20%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D/index.html">
+<meta property="og:site_name" content="Alexander">
+<meta property="og:description" content="给一个数组，输出数组中不同数的个数相当于实现unique函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-01T13:33:00.000Z">
+<meta property="article:modified_time" content="2021-05-01T13:33:00.000Z">
+<meta property="article:author" content="Alexander">
+<meta property="article:tag" content="双指针">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/algorithm/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> AcWing 817. 数组去重 - Alexander </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/algorithm/." class="logo">Alexander</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/categories">
+                            
+                            
+                                分类
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/tags">
+                            
+                            
+                                标签
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          AcWing 817. 数组去重
+        
+      </h1>
+
+      <time class="post-time">
+          5月 01 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>给一个数组，输出数组中不同数的个数<br>相当于实现unique函数</p>
+<span id="more"></span>
+<p>先排序，pre指向的元素前面所有的数都是不相同的<br>如果当前值a[i]与a[pre]不相同，则把a[i]放到a[pre]中，pre向后移动</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">int</span> a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i];</span><br><span class="line">    <span class="built_in">sort</span>(a+<span class="number">1</span>,a+n+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> pre=<span class="number">1</span>;</span><br><span class="line">    a[pre]=a[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a[i]!=a[pre])&#123;</span><br><span class="line">            a[++pre]=a[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;pre&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/algorithm/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/algorithm/2021/05/01/LeetCode80.%20%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%20II/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">LeetCode 80. 删除有序数组中的重复项 II</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/algorithm/2021/05/01/1221.%20%E5%9B%9B%E5%B9%B3%E6%96%B9%E5%92%8C/">
+        <span class="next-text nav-default">AcWing 1221. 四平方和</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2020 -
+    
+    2021
+    <span class="footer-author">Alexander.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/algorithm/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/algorithm/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/algorithm/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
