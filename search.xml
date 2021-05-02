@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Acwing 73. 数组中只出现一次的两个数字</title>
+      <link href="/algorithm/2021/05/02/acwing73/"/>
+      <url>/algorithm/2021/05/02/acwing73/</url>
+      
+        <content type="html"><![CDATA[<p>一个整型数组里除了两个数字之外，其他的数字都出现了两次。</p><p>请写程序找出这两个只出现一次的数字。</p><p>你可以假设这两个数字一定存在。</p><span id="more"></span><p>先把所有数异或起来，得到s<br>假设要求的那两个数分别为x,y<br>则s=x^y;<br>x,y不同，所有s肯定不为0<br>找到s的二进制中某一位为1的位置，假设为k<br>则x，y的二进制中第k位一定有一个为1，一个为0<br>不妨假设x的二进制第k位为1<br>找到原来集合中所有二进制第k位为1的数(其中包括x，其他的所有数都出现两次),并将其异或起来，即可得到x的值<br>y=s^x</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">findNumsAppearOnce</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> i:nums)&#123;</span><br><span class="line">            s^=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//假设两个不同的数为x,y</span></span><br><span class="line">        <span class="comment">//s的值是x^y</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//找到s的二进制数某一位为1的位置k</span></span><br><span class="line">        <span class="keyword">int</span> k=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!(s&amp;(<span class="number">1</span>&lt;&lt;k)))k++;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//找到原来集合中所有二进制第k位为1的数,并将其异或起来</span></span><br><span class="line">        <span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> i:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;k)&amp;i)&#123;</span><br><span class="line">                x^=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;x,s^x&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 位运算 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 位运算 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode 137. 只出现一次的数字 II</title>
       <link href="/algorithm/2021/05/02/leetCode137/"/>
       <url>/algorithm/2021/05/02/leetCode137/</url>
