@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="LeetCode 137. 只出现一次的数字 II"/>
+
+
+
+
+  <meta name="keywords" content="位运算," />
+
+
+
+
+
+  <link rel="alternate" href="/algorithm/default" title="Alexander" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/algorithm/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/02/leetCode137/"/>
+
+
+<meta name="description" content="给你一个整数数组 nums ，除某个元素仅出现 一次 外，其余每个元素都恰出现 三次 。请你找出并返回那个只出现了一次的元素。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 137. 只出现一次的数字 II">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/02/leetCode137/index.html">
+<meta property="og:site_name" content="Alexander">
+<meta property="og:description" content="给你一个整数数组 nums ，除某个元素仅出现 一次 外，其余每个元素都恰出现 三次 。请你找出并返回那个只出现了一次的元素。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-02T01:33:00.000Z">
+<meta property="article:modified_time" content="2021-05-02T01:33:00.000Z">
+<meta property="article:author" content="Alexander">
+<meta property="article:tag" content="位运算">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/algorithm/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> LeetCode 137. 只出现一次的数字 II - Alexander </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/algorithm/." class="logo">Alexander</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/categories">
+                            
+                            
+                                分类
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/tags">
+                            
+                            
+                                标签
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          LeetCode 137. 只出现一次的数字 II
+        
+      </h1>
+
+      <time class="post-time">
+          5月 02 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>给你一个整数数组 nums ，除某个元素仅出现 一次 外，其余每个元素都恰出现 三次 。请你找出并返回那个只出现了一次的元素。</p>
+<span id="more"></span>
+<p>转换成二进制之后<br>对于每个数的第k位，统计第k位1的个数，如果Mod3==1，则计入答案</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i++)&#123;<span class="comment">//int类型的数字最多32位</span></span><br><span class="line">            <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;nums.<span class="built_in">size</span>();j++)</span><br><span class="line">                <span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;i)&amp;nums[j])<span class="comment">//如果nums[j]第i位的值为1</span></span><br><span class="line">                    cnt++;</span><br><span class="line">            <span class="keyword">if</span>(cnt%<span class="number">3</span>==<span class="number">1</span>)&#123;</span><br><span class="line">                ans+=(<span class="number">1</span>&lt;&lt;i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/algorithm/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/">位运算</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/algorithm/2021/05/01/LeetCode80.%20%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9%20II/">
+        <span class="next-text nav-default">LeetCode 80. 删除有序数组中的重复项 II</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2020 -
+    
+    2021
+    <span class="footer-author">Alexander.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/algorithm/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/algorithm/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/algorithm/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
