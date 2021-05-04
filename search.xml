@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Acwing 1381. 阶乘</title>
+      <link href="/algorithm/2021/05/04/1381.%20%E9%98%B6%E4%B9%98/"/>
+      <url>/algorithm/2021/05/04/1381.%20%E9%98%B6%E4%B9%98/</url>
+      
+        <content type="html"><![CDATA[<p>N 的阶乘（记作 N!）是指从 1 到 N（包括 1 和 N）的所有整数的乘积。</p><p>阶乘运算的结果往往都非常的大。</p><p>现在，给定数字 N，请你求出 N! 的最右边的非零数字是多少。</p><p>例如 5!=1×2×3×4×5=120，所以 5! 的最右边的非零数字是 2。</p><span id="more"></span><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果结果mod10==0，就把10除干净<br>然后再对一个大一点的10^k，进行取模<br>结果是ans%=10;</p><p>k为什么不能是1（即中间步骤对10取模）：<br>ans=12;<br>ans%=10  ans=2;<br>ans*=15  ans=30;  ans=3(去除ans后面的0);<br>结果变成了ans%10=3<br>实际上ans=12*15=180  ans=18(去除ans后面的0) ans%10==8</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        ans*=i;</span><br><span class="line">        <span class="keyword">while</span>(ans%<span class="number">10</span>==<span class="number">0</span>)ans/=<span class="number">10</span>;</span><br><span class="line">        ans%=<span class="number">10000</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ans%<span class="number">10</span>&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>LeetCode 377. 组合总和 Ⅳ</title>
       <link href="/algorithm/2021/05/04/Leetcode377.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%20%E2%85%A3/"/>
       <url>/algorithm/2021/05/04/Leetcode377.%20%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C%20%E2%85%A3/</url>
