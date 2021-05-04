@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Acwing 18. 重建二叉树</title>
+      <link href="/algorithm/2021/05/04/AcWing%2018.%20%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+      <url>/algorithm/2021/05/04/AcWing%2018.%20%E9%87%8D%E5%BB%BA%E4%BA%8C%E5%8F%89%E6%A0%91/</url>
+      
+        <content type="html"><![CDATA[<p>输入一棵二叉树前序遍历和中序遍历的结果，请重建该二叉树。</p><p>注意:</p><p>二叉树中每个节点的值都互不相同；<br>输入的前序遍历和中序遍历一定合法；</p><span id="more"></span><p>样例<br>给定：<br>前序遍历是：[3, 9, 20, 15, 7]<br>中序遍历是：[9, 3, 15, 20, 7]</p><p>返回：[3, 9, 20, null, null, 15, 7, null, null, null, null]<br>返回的二叉树如下所示：<br>    3<br>   / <br>  9  20<br>    /  <br>   15   7</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>类似题目 <a href="https://zzl-alexander.github.io/algorithm/2021/05/04/1497.%20%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/">Acwing 1497. 树的遍历</a></p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    unordered_map&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pos;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; preorder, vector&lt;<span class="keyword">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(preorder.<span class="built_in">empty</span>())<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">int</span> n=inorder.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            pos[inorder[i]]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">build</span>(<span class="number">0</span>,n<span class="number">-1</span>,<span class="number">0</span>,n<span class="number">-1</span>,preorder);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">TreeNode* <span class="title">build</span><span class="params">(<span class="keyword">int</span> il,<span class="keyword">int</span> ir,<span class="keyword">int</span> pl,<span class="keyword">int</span> pr,vector&lt;<span class="keyword">int</span>&gt;&amp; preorder)</span></span>&#123;</span><br><span class="line">        TreeNode* ans=<span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[pl]);  </span><br><span class="line">        <span class="keyword">int</span> root=preorder[pl];</span><br><span class="line">        <span class="keyword">int</span> k=pos[root];</span><br><span class="line">        <span class="keyword">if</span>(il&lt;k)ans-&gt;left=<span class="built_in">build</span>(il,k<span class="number">-1</span>,pl+<span class="number">1</span>,pl+k-il,preorder);</span><br><span class="line">        <span class="keyword">if</span>(ir&gt;k)ans-&gt;right=<span class="built_in">build</span>(k+<span class="number">1</span>,ir,pl+k-il+<span class="number">1</span>,pr,preorder);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 树的遍历 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 树的遍历 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Acwing 1497. 树的遍历</title>
       <link href="/algorithm/2021/05/04/1497.%20%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/"/>
       <url>/algorithm/2021/05/04/1497.%20%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86/</url>
