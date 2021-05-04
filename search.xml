@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Acwing 15. 二维数组中的查找</title>
+      <link href="/algorithm/2021/05/04/15.%20%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/"/>
+      <url>/algorithm/2021/05/04/15.%20%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9F%A5%E6%89%BE/</url>
+      
+        <content type="html"><![CDATA[<p>在一个二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。</p><p>请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</p><span id="more"></span><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>考虑右上角的值x<br>x左边的值都小于target，x右边的值都大于target</p><p>复杂度o(n+m)</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">searchArray</span><span class="params">(vector&lt;vector&lt;<span class="keyword">int</span>&gt;&gt; array, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(array.<span class="built_in">empty</span>())<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">int</span> n=array.<span class="built_in">size</span>(),m=array[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=n<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n&amp;&amp;j&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=array[i][j];</span><br><span class="line">            <span class="keyword">if</span>(x==target)<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(x&gt;target)j--;</span><br><span class="line">            <span class="keyword">else</span> i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思维题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 思维题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Acwing 1381. 阶乘</title>
       <link href="/algorithm/2021/05/04/1381.%20%E9%98%B6%E4%B9%98/"/>
       <url>/algorithm/2021/05/04/1381.%20%E9%98%B6%E4%B9%98/</url>
