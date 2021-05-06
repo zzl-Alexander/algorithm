@@ -12,12 +12,12 @@
 
 
 
-  <meta name="description" content="Acwing 24. 机器人的运动范围"/>
+  <meta name="description" content="Acwing 26. 二进制中1的个数"/>
 
 
 
 
-  <meta name="keywords" content="剑指Offer," />
+  <meta name="keywords" content="剑指Offer,lowbit," />
 
 
 
@@ -32,20 +32,21 @@
 
 
 
-<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/06/16. 替换空格/"/>
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/06/26. 二进制中1的个数/"/>
 
 
-<meta name="description" content="请实现一个函数，把字符串中的每个空格替换成”%20”。 你可以假定输入字符串的长度最大是 1000。 注意输出字符串的长度可能大于 1000。 样例输入：”We are happy.” 输出：”We%20are%20happy.”">
+<meta name="description" content="输入一个 32 位整数，输出该数二进制表示中 1 的个数。 注意： 负数在计算机中用其绝对值的补码来表示。样例1输入：9输出：2解释：9的二进制表示是1001，一共有2个1。样例2输入：-2输出：31解释：-2在计算机里会被表示成11111111111111111111111111111110，      一共有31个1。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Acwing 24. 机器人的运动范围">
-<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/06/16.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/index.html">
+<meta property="og:title" content="Acwing 26. 二进制中1的个数">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/06/26.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/index.html">
 <meta property="og:site_name" content="Alexander">
-<meta property="og:description" content="请实现一个函数，把字符串中的每个空格替换成”%20”。 你可以假定输入字符串的长度最大是 1000。 注意输出字符串的长度可能大于 1000。 样例输入：”We are happy.” 输出：”We%20are%20happy.”">
+<meta property="og:description" content="输入一个 32 位整数，输出该数二进制表示中 1 的个数。 注意： 负数在计算机中用其绝对值的补码来表示。样例1输入：9输出：2解释：9的二进制表示是1001，一共有2个1。样例2输入：-2输出：31解释：-2在计算机里会被表示成11111111111111111111111111111110，      一共有31个1。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-05-06T12:21:00.000Z">
-<meta property="article:modified_time" content="2021-05-06T12:21:00.000Z">
+<meta property="article:published_time" content="2021-05-06T13:21:00.000Z">
+<meta property="article:modified_time" content="2021-05-06T13:21:00.000Z">
 <meta property="article:author" content="Alexander">
 <meta property="article:tag" content="剑指Offer">
+<meta property="article:tag" content="lowbit">
 <meta name="twitter:card" content="summary">
 
 
@@ -71,7 +72,7 @@
 
 
 
-    <title> Acwing 24. 机器人的运动范围 - Alexander </title>
+    <title> Acwing 26. 二进制中1的个数 - Alexander </title>
   <meta name="generator" content="Hexo 5.4.0"></head>
 
   <body>
@@ -135,7 +136,7 @@
     <header class="post-header">
       <h1 class="post-title">
         
-          Acwing 24. 机器人的运动范围
+          Acwing 26. 二进制中1的个数
         
       </h1>
 
@@ -148,14 +149,12 @@
 
     
             <div class="post-content">
-            <p>请实现一个函数，把字符串中的每个空格替换成”%20”。</p>
-<p>你可以假定输入字符串的长度最大是 1000。</p>
-<p>注意输出字符串的长度可能大于 1000。</p>
-<p>样例<br>输入：”We are happy.”</p>
-<p>输出：”We%20are%20happy.”</p>
+            <p>输入一个 32 位整数，输出该数二进制表示中 1 的个数。</p>
+<p>注意：</p>
+<p>负数在计算机中用其绝对值的补码来表示。<br>样例1<br>输入：9<br>输出：2<br>解释：9的二进制表示是1001，一共有2个1。<br>样例2<br>输入：-2<br>输出：31<br>解释：-2在计算机里会被表示成11111111111111111111111111111110，<br>      一共有31个1。</p>
 <span id="more"></span>
-<p>水题</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">replaceSpaces</span><span class="params">(string &amp;str)</span> </span>&#123;</span><br><span class="line">        string ans=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:str)&#123;</span><br><span class="line">            <span class="keyword">if</span>(x==<span class="string">&#x27; &#x27;</span>)ans+=<span class="string">&quot;%20&quot;</span>;</span><br><span class="line">            <span class="keyword">else</span> ans+=x;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>lowbit(x) 返回x，最左边的1的位置对应的值</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> -x&amp;x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">NumberOf1</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n)&#123;</span><br><span class="line">            n-=<span class="built_in">lowbit</span>(n);</span><br><span class="line">            ans++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
             </div>
           
 
@@ -166,6 +165,8 @@
 		  
 			<a href="/algorithm/tags/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>
 		  
+			<a href="/algorithm/tags/lowbit/">lowbit</a>
+		  
 		</div>
 		
 
@@ -173,14 +174,14 @@
         
   <nav class="post-nav">
     
-      <a class="prev" href="/algorithm/2021/05/06/26.%20%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD1%E7%9A%84%E4%B8%AA%E6%95%B0/">
+      <a class="prev" href="/algorithm/2021/05/06/21.%20%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Acwing 26. 二进制中1的个数</span>
+        <span class="prev-text nav-default">Acwing 21. 斐波那契数列</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     
     
-      <a class="next" href="/algorithm/2021/05/06/24.%20%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%9A%84%E8%BF%90%E5%8A%A8%E8%8C%83%E5%9B%B4/">
+      <a class="next" href="/algorithm/2021/05/06/16.%20%E6%9B%BF%E6%8D%A2%E7%A9%BA%E6%A0%BC/">
         <span class="next-text nav-default">Acwing 24. 机器人的运动范围</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
