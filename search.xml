@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>Acwing 55. 连续子数组的最大和</title>
+      <link href="/algorithm/2021/05/12/55.%20%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/"/>
+      <url>/algorithm/2021/05/12/55.%20%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<p>输入一个 非空 整型数组，数组里的数可能为正，也可能为负。</p><p>数组中一个或连续的多个整数组成一个子数组。</p><p>求所有子数组的和的最大值。</p><p>要求时间复杂度为 O(n)。</p><span id="more"></span><p>样例<br>输入：[1, -2, 3, 10, -4, 7, 2, -5]</p><p>输出：18</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>dp[i]//表示以nums[i]结尾的连续数组的最大值</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSubArray</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=-INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> dp[<span class="number">100060</span>];</span><br><span class="line">        dp[<span class="number">0</span>]=nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> n=nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            dp[i]=<span class="built_in">max</span>(nums[i],dp[i<span class="number">-1</span>]+nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)ans=<span class="built_in">max</span>(ans,dp[i]);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> DP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Acwing 41. 包含min函数的栈</title>
+      <link href="/algorithm/2021/05/12/41.%20%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/"/>
+      <url>/algorithm/2021/05/12/41.%20%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/</url>
+      
+        <content type="html"><![CDATA[<p>设计一个支持push，pop，top等操作并且可以在O(1)时间内检索出最小元素的堆栈。</p><p>push(x)–将元素x插入栈中<br>pop()–移除栈顶元素<br>top()–得到栈顶元素<br>getMin()–得到栈中最小元素</p><span id="more"></span><p>样例<br>MinStack minStack = new MinStack();<br>minStack.push(-1);<br>minStack.push(3);<br>minStack.push(-4);<br>minStack.getMin();   –&gt; Returns -4.<br>minStack.pop();<br>minStack.top();      –&gt; Returns 3.<br>minStack.getMin();   –&gt; Returns -1.</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>维护一个单调栈来得到栈中的最小值</p><ol><li>当新加入的元素小于等于单调栈栈顶的元素时，把这个元素放入单调栈中（因为最小值更新了）</li><li>当要弹出的元素等于单调栈栈顶元素时，说明当前的最小值要出栈了，把单调栈栈顶元素弹出<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt;sm;<span class="comment">//最小值的栈</span></span><br><span class="line">    stack&lt;<span class="keyword">int</span>&gt;a;<span class="comment">//存值的栈</span></span><br><span class="line">    <span class="built_in">MinStack</span>() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sm.<span class="built_in">empty</span>()||x&lt;=sm.<span class="built_in">top</span>())sm.<span class="built_in">push</span>(x);</span><br><span class="line">        a.<span class="built_in">push</span>(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(sm.<span class="built_in">top</span>()==a.<span class="built_in">top</span>())sm.<span class="built_in">pop</span>();</span><br><span class="line">        a.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sm.<span class="built_in">top</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your MinStack object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * MinStack obj = new MinStack();</span></span><br><span class="line"><span class="comment"> * obj.push(x);</span></span><br><span class="line"><span class="comment"> * obj.pop();</span></span><br><span class="line"><span class="comment"> * int param_3 = obj.top();</span></span><br><span class="line"><span class="comment"> * int param_4 = obj.getMin();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 单调栈 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 单调栈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Acwing 3493. 最大的和</title>
+      <link href="/algorithm/2021/05/12/3493.%20%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C/"/>
+      <url>/algorithm/2021/05/12/3493.%20%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个长度为 n 的正整数数列 a1,a2,…,an。</p><p>初始时，数列中的每个元素要么处于可选状态，要么处于不可选状态。</p><p>你可以选择一个长度恰好为 k 的区间 [i,i+k−1]，使得 ai∼ai+k−1 这 k 个元素的状态全部变为可选。</p><p>请问，在经过此操作后，所有处于可选状态的元素之和最大是多少。<br>1≤N≤30</p><span id="more"></span><p>输入格式<br>第一行包含两个整数 n 和 k。</p><p>第二行包含 n 个整数 ai。</p><p>第三行包含一个长度为 n 的 01 序列，如果第 i 个数为 1，表示 ai 的初始状态为可选，如果第 i 个数为 0，表示 ai 的初始状态为不可选。</p><p>输出格式<br>一行一个整数，表示答案。</p><p>数据范围<br>对于 30% 的数据，1≤k≤n≤1000<br>对于 100% 的数据，1≤k≤n≤105,1≤ai≤105<br>输入样例1：<br>3 1<br>2 5 4<br>0 0 1<br>输出样例1：<br>9<br>输入样例2：<br>4 3<br>10 5 4 7<br>0 1 1 0<br>输出样例2：<br>19</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>设两个指针l,r  使得r-l+1=k<br>每次两个指针向右移动，然后更新一下cnt，求一下最大值</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll a[MAXN];</span><br><span class="line"><span class="keyword">int</span> b[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;b[i];</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,r=k;</span><br><span class="line">    ll ma=<span class="number">0</span>;</span><br><span class="line">    ll cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)cnt+=a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k+<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(b[i])cnt+=a[i];</span><br><span class="line">    ma=<span class="built_in">max</span>(ma,cnt);</span><br><span class="line">    l++;</span><br><span class="line">    r++;</span><br><span class="line">    <span class="keyword">while</span>(r&lt;=n)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b[l<span class="number">-1</span>]==<span class="number">0</span>)cnt-=a[l<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(b[r]==<span class="number">0</span>)cnt+=a[r];</span><br><span class="line">        ma=<span class="built_in">max</span>(ma,cnt);</span><br><span class="line">        l++,r++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ma&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 双指针 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 双指针 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Acwing 38. 二叉树的镜像</title>
       <link href="/algorithm/2021/05/07/38.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/"/>
       <url>/algorithm/2021/05/07/38.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/</url>

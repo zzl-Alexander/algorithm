@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Acwing 3493. 最大的和"/>
+
+
+
+
+  <meta name="keywords" content="双指针," />
+
+
+
+
+
+  <link rel="alternate" href="/algorithm/default" title="Alexander" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/algorithm/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/12/3493. 最大的和/"/>
+
+
+<meta name="description" content="给定一个长度为 n 的正整数数列 a1,a2,…,an。 初始时，数列中的每个元素要么处于可选状态，要么处于不可选状态。 你可以选择一个长度恰好为 k 的区间 [i,i+k−1]，使得 ai∼ai+k−1 这 k 个元素的状态全部变为可选。 请问，在经过此操作后，所有处于可选状态的元素之和最大是多少。1≤N≤30">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Acwing 3493. 最大的和">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/12/3493.%20%E6%9C%80%E5%A4%A7%E7%9A%84%E5%92%8C/index.html">
+<meta property="og:site_name" content="Alexander">
+<meta property="og:description" content="给定一个长度为 n 的正整数数列 a1,a2,…,an。 初始时，数列中的每个元素要么处于可选状态，要么处于不可选状态。 你可以选择一个长度恰好为 k 的区间 [i,i+k−1]，使得 ai∼ai+k−1 这 k 个元素的状态全部变为可选。 请问，在经过此操作后，所有处于可选状态的元素之和最大是多少。1≤N≤30">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-12T12:21:00.000Z">
+<meta property="article:modified_time" content="2021-05-12T12:21:00.000Z">
+<meta property="article:author" content="Alexander">
+<meta property="article:tag" content="双指针">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/algorithm/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Acwing 3493. 最大的和 - Alexander </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/algorithm/." class="logo">Alexander</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/categories">
+                            
+                            
+                                分类
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/tags">
+                            
+                            
+                                标签
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Acwing 3493. 最大的和
+        
+      </h1>
+
+      <time class="post-time">
+          5月 12 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>给定一个长度为 n 的正整数数列 a1,a2,…,an。</p>
+<p>初始时，数列中的每个元素要么处于可选状态，要么处于不可选状态。</p>
+<p>你可以选择一个长度恰好为 k 的区间 [i,i+k−1]，使得 ai∼ai+k−1 这 k 个元素的状态全部变为可选。</p>
+<p>请问，在经过此操作后，所有处于可选状态的元素之和最大是多少。<br>1≤N≤30</p>
+<span id="more"></span>
+<p>输入格式<br>第一行包含两个整数 n 和 k。</p>
+<p>第二行包含 n 个整数 ai。</p>
+<p>第三行包含一个长度为 n 的 01 序列，如果第 i 个数为 1，表示 ai 的初始状态为可选，如果第 i 个数为 0，表示 ai 的初始状态为不可选。</p>
+<p>输出格式<br>一行一个整数，表示答案。</p>
+<p>数据范围<br>对于 30% 的数据，1≤k≤n≤1000<br>对于 100% 的数据，1≤k≤n≤105,1≤ai≤105<br>输入样例1：<br>3 1<br>2 5 4<br>0 0 1<br>输出样例1：<br>9<br>输入样例2：<br>4 3<br>10 5 4 7<br>0 1 1 0<br>输出样例2：<br>19</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>设两个指针l,r  使得r-l+1=k<br>每次两个指针向右移动，然后更新一下cnt，求一下最大值</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN=<span class="number">1e5</span>+<span class="number">50</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line">ll a[MAXN];</span><br><span class="line"><span class="keyword">int</span> b[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n,k;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;b[i];</span><br><span class="line">    <span class="keyword">int</span> l=<span class="number">1</span>,r=k;</span><br><span class="line">    ll ma=<span class="number">0</span>;</span><br><span class="line">    ll cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)cnt+=a[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=k+<span class="number">1</span>;i&lt;=n;i++)<span class="keyword">if</span>(b[i])cnt+=a[i];</span><br><span class="line">    ma=<span class="built_in">max</span>(ma,cnt);</span><br><span class="line">    l++;</span><br><span class="line">    r++;</span><br><span class="line">    <span class="keyword">while</span>(r&lt;=n)&#123;</span><br><span class="line">        <span class="keyword">if</span>(b[l<span class="number">-1</span>]==<span class="number">0</span>)cnt-=a[l<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(b[r]==<span class="number">0</span>)cnt+=a[r];</span><br><span class="line">        ma=<span class="built_in">max</span>(ma,cnt);</span><br><span class="line">        l++,r++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;ma&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/algorithm/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">双指针</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/algorithm/2021/05/12/41.%20%E5%8C%85%E5%90%ABmin%E5%87%BD%E6%95%B0%E7%9A%84%E6%A0%88/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Acwing 41. 包含min函数的栈</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/algorithm/2021/05/07/38.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%95%9C%E5%83%8F/">
+        <span class="next-text nav-default">Acwing 38. 二叉树的镜像</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2020 -
+    
+    2021
+    <span class="footer-author">Alexander.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/algorithm/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/algorithm/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/algorithm/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
