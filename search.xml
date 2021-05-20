@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Acwing 60. 礼物的最大价值</title>
+      <link href="/algorithm/2021/05/20/78.%20%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+      <url>/algorithm/2021/05/20/78.%20%E5%B7%A6%E6%97%8B%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+      
+        <content type="html"><![CDATA[<p>字符串的左旋转操作是把字符串前面的若干个字符转移到字符串的尾部。</p><p>请定义一个函数实现字符串左旋转操作的功能。</p><p>比如输入字符串”abcdefg”和数字 2，该函数将返回左旋转 2 位得到的结果”cdefgab”。</p><span id="more"></span><p>注意：</p><p>数据保证 n 小于等于输入字符串的长度。<br>样例<br>输入：”abcdefg” , n=2</p><p>输出：”cdefgab”</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">leftRotateString</span><span class="params">(string str, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> str.<span class="built_in">substr</span>(n)+str.<span class="built_in">substr</span>(<span class="number">0</span>,n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 字符串 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Acwing 3490. 小平方</title>
+      <link href="/algorithm/2021/05/20/%E8%93%9D%E6%A1%A5%E6%9D%AF/3490.%E5%B0%8F%E5%B9%B3%E6%96%B9/"/>
+      <url>/algorithm/2021/05/20/%E8%93%9D%E6%A1%A5%E6%9D%AF/3490.%E5%B0%8F%E5%B9%B3%E6%96%B9/</url>
+      
+        <content type="html"><![CDATA[<p>小蓝发现，对于一个正整数 n 和一个小于 n 的正整数 v，将 v 平方后对 n 取余可能小于 n 的一半，也可能大于等于 n 的一半。</p><p>请问，在 1 到 n−1 中，有多少个数平方后除以 n 的余数小于 n 的一半。</p><p>例如，当 n=4 时，1,2,3 的平方除以 4 的余数都小于 4 的一半。</p><p>又如，当 n=5 时，1,4 的平方除以 5 的余数都是 1，小于 5 的一半。</p><p>而 2,3 的平方除以 5 的余数都是 4，大于等于 5 的一半。</p><span id="more"></span><p>输入格式<br>输入一行包含一个整数 n。</p><p>输出格式<br>输出一个整数，表示满足条件的数的数量。</p><p>数据范围<br>1≤n≤10000<br>输入样例：<br>5<br>输出样例：<br>2</p><p>大水题</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i*i%n*<span class="number">2</span>&lt;n)ans++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cout&lt;&lt;ans&lt;&lt;endl;</span><br><span class="line"></span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 蓝桥杯 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 蓝桥杯 </tag>
+            
+            <tag> 枚举 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Acwing 71. 二叉树的深度</title>
       <link href="/algorithm/2021/05/19/71.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/"/>
       <url>/algorithm/2021/05/19/71.%20%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%B7%B1%E5%BA%A6/</url>
@@ -1013,12 +1067,14 @@
       
       <categories>
           
-          <category> 二分 </category>
+          <category> 剑指Offer </category>
           
       </categories>
       
       
         <tags>
+            
+            <tag> 剑指Offer </tag>
             
             <tag> 二分 </tag>
             
