@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="AcWing 84. 求1+2+…+n"/>
+
+
+
+
+  <meta name="keywords" content="剑指Offer,递归," />
+
+
+
+
+
+  <link rel="alternate" href="/algorithm/default" title="Alexander" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/algorithm/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/05/05/剑指Offer/84. 求1+2+…+n/"/>
+
+
+<meta name="description" content="求 1+2+…+n，要求不能使用乘除法、for、while、if、else、switch、case 等关键字及条件判断语句 (A?B:C)。 样例输入：10 输出：55">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AcWing 84. 求1+2+…+n">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/05/05/%E5%89%91%E6%8C%87Offer/84.%20%E6%B1%821+2+%E2%80%A6+n/index.html">
+<meta property="og:site_name" content="Alexander">
+<meta property="og:description" content="求 1+2+…+n，要求不能使用乘除法、for、while、if、else、switch、case 等关键字及条件判断语句 (A?B:C)。 样例输入：10 输出：55">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-05T15:01:00.000Z">
+<meta property="article:modified_time" content="2021-05-05T15:01:00.000Z">
+<meta property="article:author" content="Alexander">
+<meta property="article:tag" content="剑指Offer">
+<meta property="article:tag" content="递归">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/algorithm/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> AcWing 84. 求1+2+…+n - Alexander </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/algorithm/." class="logo">Alexander</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/categories">
+                            
+                            
+                                分类
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/tags">
+                            
+                            
+                                标签
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          AcWing 84. 求1+2+…+n
+        
+      </h1>
+
+      <time class="post-time">
+          5月 05 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>求 1+2+…+n，要求不能使用乘除法、for、while、if、else、switch、case 等关键字及条件判断语句 (A?B:C)。</p>
+<p>样例<br>输入：10</p>
+<p>输出：55</p>
+<span id="more"></span>
+
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> a[n][n+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in"><span class="keyword">sizeof</span></span>(a)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = n;</span><br><span class="line">        (n&gt;<span class="number">0</span>) &amp;&amp; (ans += <span class="built_in">getSum</span>(n<span class="number">-1</span>));<span class="comment">//利用短路运算终止递归</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/algorithm/tags/%E5%89%91%E6%8C%87Offer/">剑指Offer</a>
+		  
+			<a href="/algorithm/tags/%E9%80%92%E5%BD%92/">递归</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/algorithm/2021/05/06/%E5%89%91%E6%8C%87Offer/20.%20%E7%94%A8%E4%B8%A4%E4%B8%AA%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Acwing 20. 用两个栈实现队列</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/algorithm/2021/05/05/%E5%89%91%E6%8C%87Offer/27.%20%E6%95%B0%E5%80%BC%E7%9A%84%E6%95%B4%E6%95%B0%E6%AC%A1%E6%96%B9/">
+        <span class="next-text nav-default">Acwing 27. 数值的整数次方</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2020 -
+    
+    2021
+    <span class="footer-author">Alexander.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/algorithm/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/algorithm/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/algorithm/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
