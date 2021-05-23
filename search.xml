@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>Acwing 86. 构建乘积数组</title>
+      <link href="/algorithm/2021/05/23/%E5%89%91%E6%8C%87Offer/86.%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/"/>
+      <url>/algorithm/2021/05/23/%E5%89%91%E6%8C%87Offer/86.%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/</url>
+      
+        <content type="html"><![CDATA[<p>给定一个数组A[0, 1, …, n-1]，请构建一个数组B[0, 1, …, n-1]，其中B中的元素B[i]=A[0]×A[1]×… ×A[i-1]×A[i+1]×…×A[n-1]。</p><p>不能使用除法。</p><span id="more"></span><p>样例<br>输入：[1, 2, 3, 4, 5]</p><p>输出：[120, 60, 40, 30, 24]<br>思考题：</p><p>能不能只使用常数空间？（除了输出的数组之外）</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>ans[i]最开始是后缀乘积<br>cnt是前缀乘积</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">multiply</span><span class="params">(<span class="keyword">const</span> vector&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=a.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;<span class="built_in">ans</span>(n+<span class="number">1</span>);</span><br><span class="line">        ans[n]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)ans[i]=ans[i+<span class="number">1</span>]*a[i];</span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            ans[i]=ans[i+<span class="number">1</span>]*cnt;</span><br><span class="line">            cnt*=a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        ans.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 前缀和 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Acwing 81. 扑克牌的顺子</title>
+      <link href="/algorithm/2021/05/22/%E5%89%91%E6%8C%87Offer/81.%20%E6%89%91%E5%85%8B%E7%89%8C%E7%9A%84%E9%A1%BA%E5%AD%90/"/>
+      <url>/algorithm/2021/05/22/%E5%89%91%E6%8C%87Offer/81.%20%E6%89%91%E5%85%8B%E7%89%8C%E7%9A%84%E9%A1%BA%E5%AD%90/</url>
+      
+        <content type="html"><![CDATA[<p>从扑克牌中随机抽 5 张牌，判断是不是一个顺子，即这 5 张牌是不是连续的。</p><p>2∼10 为数字本身，A 为 1，J 为 11，Q 为 12，K 为 13，大小王可以看做任意数字。</p><p>为了方便，大小王均以 0 来表示，并且假设这副牌中大小王均有两张。</p><span id="more"></span><p>样例1<br>输入：[8,9,10,11,12]</p><p>输出：true<br>样例2<br>输入：[0,8,9,11,12]</p><p>输出：true</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有相同数字的话肯定不能构成顺子<br>之后判断最大值与最小值（除0）的差有没有超过4，没超过都可以用0来补</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isContinuous</span><span class="params">( vector&lt;<span class="keyword">int</span>&gt; numbers )</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(numbers.<span class="built_in">empty</span>())<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="built_in">sort</span>(numbers.<span class="built_in">begin</span>(),numbers.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">int</span> pos=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(numbers[pos]==<span class="number">0</span>)pos++;</span><br><span class="line">        <span class="keyword">int</span> n=numbers.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=pos+<span class="number">1</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(numbers[i]==numbers[i<span class="number">-1</span>])<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(numbers.<span class="built_in">back</span>()-numbers[pos]&lt;=<span class="number">4</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 模拟 </tag>
+            
+            <tag> 剑指Offer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Acwing 83. 股票的最大利润</title>
+      <link href="/algorithm/2021/05/21/%E5%89%91%E6%8C%87Offer/83.%20%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6/"/>
+      <url>/algorithm/2021/05/21/%E5%89%91%E6%8C%87Offer/83.%20%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E5%A4%A7%E5%88%A9%E6%B6%A6/</url>
+      
+        <content type="html"><![CDATA[<p>假设把某股票的价格按照时间先后顺序存储在数组中，请问买卖 一次 该股票可能获得的利润是多少？</p><p>例如一只股票在某些时间节点的价格为 [9,11,8,5,7,12,16,14]。</p><p>如果我们能在价格为 5 的时候买入并在价格为 16 时卖出，则能收获最大的利润 11。</p><span id="more"></span><p>样例<br>输入：[9, 11, 8, 5, 7, 12, 16, 14]</p><p>输出：11</p><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于当前位置，减去前面的最小值，然后更新答案<br>维护前面的最小值即可</p><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxDiff</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> mi=INT_MAX;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:nums)&#123;</span><br><span class="line">            ans=<span class="built_in">max</span>(ans,x-mi);</span><br><span class="line">            mi=<span class="built_in">min</span>(mi,x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 剑指Offer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 贪心 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Acwing 75. 和为S的两个数字</title>
       <link href="/algorithm/2021/05/21/%E5%89%91%E6%8C%87Offer/75.%20%E5%92%8C%E4%B8%BAS%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/"/>
       <url>/algorithm/2021/05/21/%E5%89%91%E6%8C%87Offer/75.%20%E5%92%8C%E4%B8%BAS%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B0%E5%AD%97/</url>
