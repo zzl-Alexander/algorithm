@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Acwing 3730. 寻找序列"/>
+
+
+
+
+  <meta name="keywords" content="思维题," />
+
+
+
+
+
+  <link rel="alternate" href="/algorithm/default" title="Alexander" >
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/algorithm/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="https://zzl-alexander.github.io/algorithm/2021/06/28/每日一题夏季/3730. 寻找序列/"/>
+
+
+<meta name="description" content="给定三个长度为 n 的整数序列 a1,a2,…,an，b1,b2,…,bn，c1,c2,…,cn。 保证对于任意 i，满足 ai≠bi，ai≠ci，bi≠ci。 请你寻找一个长度为 n 的整数序列 p1,p2,…,pn，使其能够满足： pi∈{ai,bi,ci}pi≠p(imodn)+1保证这样的序列一定存在，请输出任意满足条件的序列。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Acwing 3730. 寻找序列">
+<meta property="og:url" content="https://zzl-alexander.github.io/algorithm/2021/06/28/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98%E5%A4%8F%E5%AD%A3/3730.%20%E5%AF%BB%E6%89%BE%E5%BA%8F%E5%88%97/index.html">
+<meta property="og:site_name" content="Alexander">
+<meta property="og:description" content="给定三个长度为 n 的整数序列 a1,a2,…,an，b1,b2,…,bn，c1,c2,…,cn。 保证对于任意 i，满足 ai≠bi，ai≠ci，bi≠ci。 请你寻找一个长度为 n 的整数序列 p1,p2,…,pn，使其能够满足： pi∈{ai,bi,ci}pi≠p(imodn)+1保证这样的序列一定存在，请输出任意满足条件的序列。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-28T01:21:00.000Z">
+<meta property="article:modified_time" content="2021-06-28T01:21:00.000Z">
+<meta property="article:author" content="Alexander">
+<meta property="article:tag" content="思维题">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="stylesheet" type="text/css" href="/algorithm/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> Acwing 3730. 寻找序列 - Alexander </title>
+  <meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/algorithm/." class="logo">Alexander</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/archives">
+                            
+                            
+                                归档
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/categories">
+                            
+                            
+                                分类
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/tags">
+                            
+                            
+                                标签
+                            
+                        </a>
+                    </li>
+                
+                    <li class="menu-item">
+                        <a href="/algorithm/about">
+                            
+                            
+                                关于
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Acwing 3730. 寻找序列
+        
+      </h1>
+
+      <time class="post-time">
+          6月 28 2021
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <p>给定三个长度为 n 的整数序列 a1,a2,…,an，b1,b2,…,bn，c1,c2,…,cn。</p>
+<p>保证对于任意 i，满足 ai≠bi，ai≠ci，bi≠ci。</p>
+<p>请你寻找一个长度为 n 的整数序列 p1,p2,…,pn，使其能够满足：</p>
+<p>pi∈{ai,bi,ci}<br>pi≠p(imodn)+1<br>保证这样的序列一定存在，请输出任意满足条件的序列。</p>
+<span id="more"></span>
+<p>输入格式<br>第一行包含整数 T，表示共有 T 组测试数据。</p>
+<p>每组数据第一行包含整数 n。</p>
+<p>第二行包含整数 a1,a2,…,an。</p>
+<p>第三行包含整数 b1,b2,…,bn。</p>
+<p>第四行包含整数 c1,c2,…,cn。</p>
+<p>输出格式<br>每组数据输出一行结果，包含 n 个整数 p1,p2,…,pn，整数之间空格隔开。</p>
+<p>如果答案不唯一，输出任意符合条件的解均可。</p>
+<p>数据范围<br>1≤T≤100,<br>3≤n≤100,<br>1≤ai,bi,ci≤100,<br>保证对于任意 i，满足 ai≠bi，ai≠ci，bi≠ci。</p>
+<p>输入样例：<br>5<br>3<br>1 1 1<br>2 2 2<br>3 3 3<br>4<br>1 2 1 2<br>2 1 2 1<br>3 4 3 4<br>7<br>1 3 3 1 1 1 1<br>2 4 4 3 2 2 4<br>4 2 2 2 4 4 2<br>3<br>1 2 1<br>2 3 3<br>3 1 2<br>10<br>1 1 1 2 2 2 3 3 3 1<br>2 2 2 3 3 3 1 1 1 2<br>3 3 3 1 1 1 2 2 2 3<br>输出样例：<br>1 2 3<br>1 2 1 2<br>1 3 4 3 2 4 2<br>1 3 2<br>1 2 3 1 2 3 1 2 3 2</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>构造一个新的数组，使得相邻的两个数字不同（包括a[1]和a[n]）<br>因为题中保证对于任意 i，满足 ai≠bi，ai≠ci，bi≠ci，所以直接挨个枚举就可以了</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">105</span>][<span class="number">5</span>];</span><br><span class="line"><span class="keyword">int</span> p[<span class="number">105</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> t,n;</span><br><span class="line">    cin&gt;&gt;t;</span><br><span class="line">    <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        cin&gt;&gt;n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)cin&gt;&gt;a[i][<span class="number">3</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">        p[++cnt]=a[<span class="number">1</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> pos=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(a[i][pos]!=p[cnt])p[++cnt]=a[i][pos];</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pos++;</span><br><span class="line">                <span class="keyword">if</span>(pos==<span class="number">4</span>)pos=<span class="number">1</span>;</span><br><span class="line">                p[++cnt]=a[i][pos];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(a[n][pos]!=p[cnt]&amp;&amp;a[n][pos]!=a[<span class="number">1</span>][<span class="number">1</span>])p[++cnt]=a[n][pos];</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                pos++;</span><br><span class="line">                <span class="keyword">if</span>(pos==<span class="number">4</span>)pos=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(a[n][pos]==p[cnt]||a[n][pos]==a[<span class="number">1</span>][<span class="number">1</span>])pos++;</span><br><span class="line">                <span class="keyword">if</span>(pos==<span class="number">4</span>)pos=<span class="number">1</span>;</span><br><span class="line">                p[++cnt]=a[n][pos];</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;i++)cout&lt;&lt;p[i]&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout&lt;&lt;p[n]&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            </div>
+          
+
+    
+      <footer class="post-footer">
+		
+		<div class="post-tags">
+		  
+			<a href="/algorithm/tags/%E6%80%9D%E7%BB%B4%E9%A2%98/">思维题</a>
+		  
+		</div>
+		
+
+        
+        
+  <nav class="post-nav">
+    
+    
+      <a class="next" href="/algorithm/2021/05/23/%E5%89%91%E6%8C%87Offer/86.%20%E6%9E%84%E5%BB%BA%E4%B9%98%E7%A7%AF%E6%95%B0%E7%BB%84/">
+        <span class="next-text nav-default">Acwing 86. 构建乘积数组</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </footer>
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2020 -
+    
+    2021
+    <span class="footer-author">Alexander.</span>
+    <span class="power-by">
+        由 <a class="hexo-link" target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> and <a class="theme-link" target="_blank" rel="noopener" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a> 强力驱动
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/algorithm/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/algorithm/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/algorithm/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
